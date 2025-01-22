@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중세사 - 남북국 시대와 고려</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* 타임라인 스타일 */
+        .timeline {
+            position: relative;
+            margin: 50px 0;
+            padding: 40px 0;
+            list-style: none;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: #ddd;
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            margin: 20px 0;
+            width: 50%;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .timeline-item:nth-child(odd) { left: 0; }
+        .timeline-item:nth-child(even) { left: 50%; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: #007bff;
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+        .timeline-item:nth-child(odd)::before {
+            left: 100%;
+            margin-left: 15px;
+        }
+        .timeline-item:nth-child(even)::before {
+            left: 0;
+            margin-left: -35px;
+        }
+        .timeline-item h2 {
+            font-size: 1.5em;
+            margin: 0 0 10px;
+        }
+        .timeline-item p {
+            font-size: 1em;
+            color: #555;
+        }
+        .timeline-item a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .timeline-item a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>중세사 - 남북국 시대와 고려</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">홈</a></li>
+        </ul>
+    </nav>
+    <main>
+        <ul class="timeline">
+            <li class="timeline-item">
+                <h2>발해 (698-926)</h2>
+                <p>발해는 고구려의 계승국으로, 북방의 강력한 국가였습니다.</p>
+                <a href="medieval/balhae.html">자세히 보기</a>
+            </li>
+            <li class="timeline-item">
+                <h2>통일신라 (668-935)</h2>
+                <p>통일신라는 한반도 남부를 통일한 후, 화려한 불교 문화를 꽃피웠습니다.</p>
+                <a href="medieval/silla.html">자세히 보기</a>
+            </li>
+            <li class="timeline-item">
+                <h2>고려 (918-1392)</h2>
+                <p>고려는 후삼국을 통일하고, 고려청자와 같은 찬란한 문화를 발전시킨 국가입니다.</p>
+                <a href="medieval/goryeo.html">자세히 보기</a>
+            </li>
+        </ul>
+    </main>
+    <footer>
+        <p>중세사 정리 자료 - 남북국 시대와 고려</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고대사</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* 카드 스타일 */
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .card h2 {
+            font-size: 1.5em;
+            margin: 15px 0;
+        }
+
+        .card p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .card a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>고대사 정리</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">홈</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="card-container">
+            <div class="card">
+                <img src="../imges/wonsamguk.png" alt="부여, 고구려, 옥저, 동예, 삼한">
+                <h2>연맹왕국(聯盟王國)</h2>
+                <p>부여, 고구려, 옥저, 동예, 삼한의 역사와 문화를 알아보세요.</p>
+                <a href="ancientGroup1.html">자세히 보기</a>
+            </div>
+            <div class="card">
+                <img src="../imges/samguk.png" alt="고구려, 백제, 신라, 가야">
+                <h2>삼국시대(三國時代)</h2>
+                <p>고구려, 백제, 신라, 가야의 역사와 문화를 알아보세요.</p>
+                <a href="ancientGroup2.html">자세히 보기</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>고대사 정리 자료</p>
+    </footer>
+</body>
+</html>

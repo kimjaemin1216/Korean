@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현대사 - 한국사</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* 메인 섹션 스타일 */
+        .section-container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-item {
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px 0;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .section-item:hover {
+            background-color: #eaeaea;
+        }
+
+        .section-item h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* 모달 팝업 스타일 */
+        .modal {
+            display: none; /* 초기에는 숨김 */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* 배경 어둡게 설정 */
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%; /* 팝업 창 너비 */
+            height: 90%; /* 팝업 창 높이 */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* 화면 중앙으로 이동 */
+            overflow-y: auto; /* 내용이 많으면 스크롤 가능하게 설정 */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+            z-index: 1010; /* 팝업 창의 z-index 설정 */
+        }
+
+        /* 닫기 버튼 */
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: black;
+        }
+
+        /* 네비게이션 버튼을 팝업 창 밖에 고정 */
+        .nav-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #fff;
+            border: none;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+            color: black;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1100; /* 네비게이션 버튼이 팝업보다 위에 표시되도록 설정 */
+            overflow-y: auto;
+            position: fixed;
+        }
+
+        .nav-btn:hover {
+            background-color: #ccc; /* 호버 시 색상 변경 */
+        }
+
+        .prev-btn {
+            left: calc(15% - 60px); /* 팝업 창의 왼쪽 바깥으로 위치 */
+            overflow-y: auto;
+            position: fixed;
+        }
+
+        .next-btn {
+            right: calc(15% - 60px); /* 팝업 창의 오른쪽 바깥으로 위치 */
+            overflow-y: auto;
+            position: fixed;
+        }
+
+        #scrollTopBtn {
+            display: none; /* 초기에는 숨김 */
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 100;
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>현대사 - 개항부터 현대까지</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">홈</a></li>
+        </ul>
+    </nav>
+
+    <div class="section-container">
+        <div class="section-item" data-modal="modal-open">
+            <h2>개항기 (1864년 ~ 1910년)</h2>
+        </div>
+
+        <div class="section-item" data-modal="modal-japanese">
+            <h2>일제강점기 (1910년 ~ 1945년)</h2>
+        </div>
+
+        <div class="section-item" data-modal="modal-independence">
+            <h2>광복 이후 현재까지 (1945년 ~ )</h2>
+        </div>
+    </div>
+
+    <!-- 모달 팝업들 -->
+    <div id="modal-open" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>개항기 (1864년 ~ 1910년)</h2>
+            <p style="text-align: center; font-size: 1.25em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #a43a00;"><b><span style="font-family: 'Noto Serif KR';">고종&nbsp;/&nbsp;대한제국 /&nbsp;순조</span></b></span><br><b><span style="font-family: 'Noto Serif KR';">1864년&nbsp;~&nbsp;1895년&nbsp;/&nbsp;1897년&nbsp;~&nbsp;1907년 /&nbsp;1907년 ~ 1910년</span></b><br></span></p>
+            <p style="text-align: justify; font-size: 1.25em;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.25em;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>고종</b>은 흥선대원군의 둘째아들로 추촌왕인 익종(순조의 아들/문조/효명세자)의 양자로 입양되어 왕위를 받았습니다. 젊은시절 세도가의 눈을 피해 뒤에서는 조대비와 동맹을 맺고, 앞에서는 파락호 행세를 했던 흥선대원군은 허수아비 왕을 찾던 세도가의 비위를 맞추고 아들을 왕으로 만들어 권력을 잡게 되었습니다. 어린 고종이 즉위한 후 <span style="background-color: #fff79a;"><b>흥선대원군은 막강한 실세가 되어 10년 동안 섭정</b></span>을 하였고, 이후 고종이 친정을 시작하게 되었으나 <b>명성왕후와 외척세력인 민씨 일가의 집권과 부패가 시작</b>되었습니다.</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <h3 style="text-align: center;" data-ke-size="size23"><span style="color: #000000;"><b><span style="font-family: 'Noto Serif KR';">개항기의 전체적인 흐름</span></b></span></h3>
+            <p>&nbsp;</p>
+            <img src="../imges/open.png" width="100%">
+            <p>&nbsp;</p>
+
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: center; font-size: 1.25em;">&nbsp;</p>
+            <p style="text-align: center; font-size: 1.25em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="font-family: 'Noto Serif KR';"><span style="color: #a43a00;">흥선대원군의 수렴청정</span>의&nbsp;시작 </span></b><br><b><span style="font-family: 'Noto Serif KR';">1863년&nbsp;~&nbsp;1873년</span> </b><br></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>왕권&nbsp;강화&nbsp;정책&nbsp;:</b> 비변사 폐지, 의정부 부활(행정), 삼군부 부활(군사), <b><span style="background-color: #fff79a;">대전회통 편찬(법전),</span></b> 육전조례 편찬, 경복궁 중건(당백전 발행, 원납전 징수 &gt;<b> <span style="color: #b00800;">화폐가치는 떨어지고</span></b><b><span style="color: #b00800;">물가는 폭등, 백성 강제 노역</span></b><span style="color: #b00800;"><span style="color: #000000;">)</span></span><br><b>민생안정&nbsp;정책&nbsp;:</b> <span style="color: #000000;">서원 철폐(47개소만 남김), </span>양전 사업,&nbsp;<span style="color: #000000;">사창제&nbsp;실시,&nbsp;</span>호포제&nbsp;단행(조선&nbsp;최초 양반에게&nbsp;세금&nbsp;부과)<br><b>통상 수교 거부 정책&nbsp;:</b>&nbsp;척화비&nbsp;건립</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>사회운동 :</b>&nbsp;</span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">위정척사파(이항로,&nbsp;기정진의 척화소) <br></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="font-size: 1.12em; text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1866년]</b></span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b></b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ병인박해 :</b> 프랑스 천주교 신자, 선교사 처형(대원군이 러시아 견제 위해 프랑스에 도움 요청했으나 프랑스가 거절)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ제너럴셔먼호 사건 :</b> 미국의 함포 침략, <span style="background-color: #fff79a;">평양 대동강 박규수</span>의 활약</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff79a;"><span style="color: #000000;"><b>ㆍ병인양요 :</b></span> 프랑스의 강화도 침략</span>(병인박해의 복수), <b>외규장각 의궤 약탈</b>,<b> <span style="background-color: #fff79a;">정족산성에서 양헌수 부대</span></b> 활약, </span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="background-color: #fff79a;">문수산성에서 한성근 부대</span></b> 활약</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">&nbsp;</span></p>
+            <p style="font-size: 1.12em; text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1868년]</b></span></p>   
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span>오페르트&nbsp;도굴&nbsp;사건 :</b> 독일인 오페르트가 흥선대원군&nbsp;아버지인&nbsp;남연군의&nbsp;묘&nbsp;도굴&nbsp;시도&nbsp;<br></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="font-size: 1.12em; text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1871년]</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff79a;"><b>ㆍ신미양요 :</b></span> 미국의 강화도 침략(제너럴셔면호 복수), <b><span style="background-color: #fff79a;">광성보에서 어제연 장군</span></b>이 활약했으나 장군기를 빼앗기고 전사</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ결과 : </span>척화비 건립</b>(통상수교거부정책 시작)<br></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p>&nbsp;</p>
+            <img src="../imges/open-2.png" width="100%">
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: center; font-size: 1.25em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="font-family: 'Noto Serif KR';"><span style="color: #a43a00;">고종의&nbsp;친정</span>과&nbsp;개화 정책의&nbsp;시작 </span></b><br><b><span style="font-family: 'Noto Serif KR';">1873년&nbsp;~&nbsp;1907년</span></b><br></span></p>
+            <p style="text-align: justify; font-size: 1.25em;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1873년]</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>최익현의 흥선대원군 탄핵 상소(서원 철폐에 불만, 경복궁 중건으로 인한 민생 혼란)<br><b><span style="color: #000000;">ㆍ</span></b>고종의&nbsp;친정 시작</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>민씨 세력의 집권</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1875년]</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff79a;"><b><span style="color: #000000;">ㆍ</span>운요호 사건 :</b></span> 일본이 제너럴셔먼호를 모방한 사건으로 강화도에 불법으로 일본 군함 운요호가 들어와 측량을 구실로 조선 군대와 전투를 벌인 사건 &gt; <span style="background-color: #fff79a;"><b>불평등 조약의 계기(강화도 조약)</b></span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1876년]</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>최익현의&nbsp;"왜양일체론"&nbsp;개항&nbsp;반대&nbsp;상소</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="background-color: #fff79a;"><span style="color: #000000;">ㆍ</span><span style="color: #b00800;">강화도&nbsp;조약&nbsp;체결(조일 수호 조규)</span></span><span style="color: #b00800;"> :</span></b> 외국과 체결한 <span style="background-color: #fff79a;">최초의 근대적 조약이자 불평등 조약</span>(자주국 규정, <u>부산. 원산. 인천 3개항 개항</u>, 치외법권, 해안측량권 요구, 일본 화폐 혼용 가능, 무관세, 거류지 무역 등 불평등 조약 다수)&nbsp;</span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b><span style="color: #000000;">일본에 1차 수신사 파견(김기수)</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1880년]</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>개화정책의 시작 &gt; <span style="background-color: #fff79a;"><span style="color: #b00800;"><b>통리기무아문 <span style="color: #b00800;">설치</span><span style="color: #b00800;">(</span>12사, 조선 최초의 근대적 기구)</b></span></span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>별기군 신설(신식 군대, 양반, 일본인 교관 초빙), 5군영을 2영으로 개편(구식 군대)<br><span style="color: #b00800;"><b>ㆍ일본에 2차 수신사 파견(김홍집) &gt; 일본에서 중국인이 쓴 "조선 책략" 유포 <span style="color: #000000;">&gt; 유포에 반발하여 이만손이 영남 만인소 작성(위정 척사 운동)</span></b></span><br></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1882년]</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff45c;"><b><span style="background-color: #fff79a;"><span style="color: #000000;">ㆍ</span>조.미 수호 통상 조약 체결</span></b></span><b> :</b>청의 알선으로 맺은 서양과의 최초 조약, <span style="background-color: #fff79a;">최초 최혜국 대우 인정(미국)</span></span></p>
+            <p style="text-align: justify;"><span style="color: #b00800;"><b><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff45c;"><span style="background-color: #fff79a;">ㆍ임오군란</span></span> :구식군대 차별, 불량 급여(강화도 조약으로 식량 부족 &gt; 선혜청 당상 민겸호의 저택 파괴, 고관 살해)</span></b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span>청나라와 <span style="background-color: #fff45c;"><span style="background-color: #fff79a;">조청 상민 수륙 무역 장정 체결</span></span> :</b> 최초로 내지 통상권 허용, 청상인 인정 / <span style="color: #000000;">온건개화파(동도서기,&nbsp;김홍집,&nbsp;김윤식)</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span>일본과 <span style="background-color: #fff45c;"><span style="background-color: #fff79a;">제물포 조약 체결</span></span> :</b> 임오군란 시 공사관 파괴에 따른 배상금 지급, 일본 경비군 주둔 /&nbsp;<span style="color: #000000;">급진개화파(친일,&nbsp;김옥균,&nbsp;박영효)<span>&nbsp;</span></span>&nbsp;</span></p>
+            <p>&nbsp;</p>
+            <img src="../imges/hells.png" width="100%">
+            <p>&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1883년]</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>조.일 통상 장정: 최혜국 대우 조항 추가, <span style="color: #000000;">방곡령 시행(타지역에 식량 반출 금지)&nbsp;</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>미국에 보빙사 파견(민영익, 홍영식, 서광범, 유길준 등) <br><b><span style="color: #000000;">ㆍ</span><span style="color: #b00800;">원산학사&nbsp;설립</span>(최초의&nbsp;근대&nbsp;사립학교)</b> <br><b><span style="color: #000000;">ㆍ</span>한성순보&nbsp;발간(박문국에서&nbsp;발행한&nbsp;최초의&nbsp;신문,&nbsp;순한문) </b><br><b><span style="color: #000000;">ㆍ</span></b>태극기&nbsp;정식&nbsp;국기로&nbsp;선포 <br><b><span style="color: #000000;">ㆍ</span></b>기기창 설치(청에 파견한 영선사의 영향)</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1884년]</b> <br></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>우정총국 설립(우체국)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #b00800;"><b><span style="background-color: #fff45c;"><span style="background-color: #fff79a;">ㆍ갑신정변</span></span> :</b> <span style="color: #000000;">급진 개화파가(<span style="color: #000000;">김옥균, 서광범, 서재필, 홍영식 + 일본 경비군 급습)</span></span> </span>우정총국 개국 축화연을 이용하여 청군대를 몰아낼 계획 진행 → </span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">14개조 개혁 정강 발표, 개혁인민평등, 호조, 입헌군주제 표방(토지개혁X, 민중의 지지를 받지 못하고, 청의 군대가 진압하여 3일 천하로 실패) <span style="color: #000000;">→</span> 2차 일본 공사관 파괴 &gt; <span style="color: #b00800;"><span style="background-color: #fff79a;"><b>청.일 톈진조약 체결</b></span>, </span><span style="background-color: #fff79a;"><b>한.일 </b></span><span style="background-color: #fff45c;"><span style="background-color: #fff79a;"><b><span style="background-color: #fff79a;">한성조</span>약 체결(공사관 파괴에 따른 배상금 지급</b>)</span></span><br></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1885년]</b></span></b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="background-color: #fff45c;"><span style="background-color: #fff79a;"><span style="color: #000000;">ㆍ</span>거문도 사건</span></span><span>&nbsp;</span>:</b><span>&nbsp;</span><b>영국</b>이 러시아의 남하를 견제하</span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">고자 <u>거문도를 불법 점거</u></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>배재학당 설립(미국 감리교, 외국인이 설립한 한국 최초의 근대식 중등 교육 기관)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>유길준, 독일인 부들러의 조선 중립화론 주장</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ광혜원 설립</span></b>(한국 최초의 근대식 병원, 제중원으로 이름 변경)</span></p>
+            <p style="text-align: justify; font-size: 1.12em;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1886년]</b></span></b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>ㆍ</b>이화 학당 설립(미국 여성 선교사가 설립한<span>&nbsp;</span>한국 최초의 사립 여성 교육 기관)&nbsp;</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>ㆍ</b>육영 공원 설립(한국 최초의 근대적 명문 귀족 공립 학교)</span></span></p>
+            <p style="text-align: justify; font-size: 1.12em;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1889년]</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>ㆍ</b>함경도에 방곡령 실시</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1894년]</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>고부 농민 봉기 발생 : 고부 군수의 학정 </span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">&gt; 전봉준 + 고부군 농민들의 봉기(사발통문 작성) &gt; 고부 관아 점령 &gt; 조사관 안핵사 이용태 파견 &gt; 동학의 반란으로 처리(동학 농민 운동의 계기)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff79a;"><b><b><span style="color: #000000;">ㆍ</span></b></b><b>1차 동학 농민 운동 발생 :</b></span> 백산 봉기 &gt; 정부군에 대항 황토현, 황룡촌 전투 승리 &gt; 전주성 점령 &gt; 조선 정부의 청나라 군대 파병 요청 &gt; 톈진 조약으로 일본 군대도 함께 파병 &gt; 전주 화약 체결 &gt; <span style="background-color: #fff79a;"><b>동학 농민 운동 결과 :</b> 교정천, 집강소 설치(정부 개혁 기구와 농민 자치 기구), 패정 개혁안 12개조 발표(봉건적 악습 철폐, 토지 개혁안)</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b><span style="color: #000000;">청.일 군대에 철수 요구 &gt; </span>일본 경복궁 점령 &gt; 교정청 폐지 &gt; <span style="background-color: #fff79a;">군국기무처 설치</span>(1차 김홍집 내각 &gt; 1차 갑오개혁 단행)</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;"><b>※ 1차 갑오개혁 내용</b></span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;">연호 사용 : "개국"</span><br><span style="color: #808080;">정치 : 궁내부 설치(왕권 제한), 6조 체계 → 8아문으로 개편 </span><br><span style="color: #808080;">경제&nbsp;:&nbsp;탁지아문(갑신정변&nbsp;반영),&nbsp;조세의 현금 납부제, 은 본위&nbsp;화폐&nbsp;제도,&nbsp;도량형&nbsp;통일 </span><br><span style="color: #808080;">사회 : <b>과거제 폐지, 신분제 폐지, 과부의 재가 허용, 조혼 금지(1차 동학농민운동 내용 반영) </b></span></span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;">그러나, 토지개혁과 군사제도 개혁 관련 내용 없음.</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>일본 경복궁 점령 &gt;<b> </b><span style="background-color: #fff79a;"><b>2차 동학 농민 운동 단행</b></span>(최시형, 전봉준 남북접 연합 &gt; 논산에서 집결 &gt; 공주 우금치 전투 패배, 전봉준 사형 → 3대 교주 손병희가 동학에서 천도교로 개명)</span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;">※ 2차 갑오개혁 내용</span></span></b></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;">군국기무처&nbsp;폐지,&nbsp;김홍집&nbsp;박영효&nbsp;연립&nbsp;내각</span><br><span style="color: #808080;">정치 : 8아문 <span>→</span> 7부로 개편, 행정 제도 23부로 개편, 훈련대 시위대 설치</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;">경제&nbsp;:&nbsp;탁지아문&nbsp;&gt;&nbsp;탁지부 </span><br><span style="color: #808080;">사회&nbsp;:&nbsp;<b>홍범&nbsp;14조(개혁의 기본방향 제시)</b>, 재판소 설치, <b>교육입국 조서 반포(한성 사범 학교 관제 마련)</b></span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; background-color: #fff79a;"><b><span style="color: #000000;">ㆍ</span>청일전쟁 발발</b>&nbsp;</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <img src="../imges/hells-2.png" width="100%">
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[1895년]</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>청일전쟁 일본의 승리로 종료 &gt; 시모노세키 조약, 청나라가 일본에 막대한 배상, 랴오둥. 타이완 획득 &gt; 삼국간섭(러시아, 독일, 프랑스) &gt; 일본 견제 위해 조선에 친러 세력 등용(민씨세력이 주도) &gt; <span style="background-color: #fff79a;"><b>을미사변 발생(명성왕후 민씨 암살 사건)</b></span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;">※ 3차 갑오개혁(을미개혁) : </span></span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;"><b>연호사용 "건양"</b>,&nbsp;</span></span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;">종두법 시행, 소학교 설치, 친위대와 진위대 설치, <b>단발령 시행</b>, 태양력 사용, 우편 사무 재개&nbsp;</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff79a;"><b><span style="color: #000000;">ㆍ</span>을미의병 발생 :</b></span> 양반 유생주도(이소응, 유인석), 단발령 철회 주장, 활빈당을 조직했으나 고종의 권고로 해산</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">[1896년]</span></b></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff79a;"><b><span style="color: #000000;">ㆍ</span>아관파천 :</b></span><b> </b>을미사변으로 신변의 위협을 느낀 고종이 러시아 공사관으로 피신</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>독립신문 창간 : 최초의 한글, 민간 신문, 한글과 영문판 발행(서재필 주도)&nbsp;&nbsp;</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>독립협회 결성 : 서재필, 이상재, 윤치호, 이승만 &gt; 러시아의 절영도 조차 요구 저지</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">[1897년]</span></b></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff79a;"><b><span style="color: #000000;">ㆍ</span>광무개혁(구본 신참) :</b></span> 고종 경운궁(덕수궁)으로 환궁, <b>국호 변경 "대한 제국"</b>, <span style="background-color: #fff79a;">연호사용 "광무",</span> 환구단에서 초대황제 즉위식, 원수부 설치(군 통수권 장악), 친위대, 진위대 증강 , 토지조사 후 <span style="background-color: #fff79a;">지계발급(근대적 땅문서),</span> 회사 설립, 상공업 발달</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">&nbsp;&nbsp;</span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"></span></p>
+            <p style="text-align: justify; font-size: 1.12em;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">[1898년]</span></b></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>만민공동회 개최(민중개몽운동) : 독립협회에서 주관, 관민공동회 헌의 6조, 중추원 의회 설립 주장, 입헌군주정 표방</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>황국협회(보부상 단체)가 독립협회를 급습 &gt; 독립협회 해체</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>황성신문 창간(유근, 박은식, 장지연, 신채호) : 국한문 혼용체</span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">[1904년]</span></b></p>
+            <p style="text-align: justify;"><span style="background-color: #fff79a;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">ㆍ러일전쟁 발발</span></b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>한일의정서 체결(일본이 대한제국 영토를 마음대로 사용을 허용) : 러일전쟁 도중에 체결</span></p>
+            <p style="text-align: justify;"><span style="color: #b00800;"><b><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">ㆍ제 1차 한일협약 : 고문 정치 외교 : 스티븐스 / 재정 : 메가타 화폐 정리 사업 추진</span></b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b><span style="background-color: #fff79a;">보안회 일제의 황무지 개간 저지</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>대한매일신보 창간(영국인 사장, 의병 운동에 호의적 기사 게재, 통감부 검열X)</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">[1905년]</span></b></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>제 2차 영일동맹</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>가쓰라 테프트 밀약 체결(일본과 미국의 식민 지배 상호 인정)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>러.일 전쟁의 결과 : 포츠머스 조약 체결(일본이 조선 지배를 러시아가 인정, 미국의 중재로 체결)</span></p>
+            <p style="text-align: justify;"><span style="color: #b00800; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; background-color: #fff79a;"><b>ㆍ제 2차 한일 협약(을사늑약) : 대한 제국 외교권 박탈, <b>통감부 설치(이토 히로부미 부임)</b></b></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">[1906년]</span></b></span></p>
+            <p style="text-align: justify;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff79a;"><span style="color: #000000;">ㆍ</span>을사의병</span>(평민의장 신돌석, 최익현, 민종식)</span></b></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>황성신문에 장지연의 시일야방성대곡 게재</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">[1907년]</span></b></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b><span style="color: #000000;">ㆍ</span></b>국문 연구소 설치(지석영, 주시경)</span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b><span style="color: #000000;">ㆍ</span></b><span style="color: #000000;">고종 을사늑약의 부당성을 알리기 위해 </span>네덜란드 헤이그에 특사 파견(이상설, 이준, 이위종) &gt; <b>고종의 강제 퇴위</b>와 군대해산(정미 7조약)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>한.일 신협약(차관 통치)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>대한자강회 고종 강제 퇴위 반대 운동</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff79a;"><b><span style="color: #000000;">ㆍ</span></b>대구에서 국채보상운동 진행</span>(<span style="color: #000000;">대한매일신보,&nbsp;</span>서상돈, 김광제 등)</span></p>
+            <p style="text-align: justify;"><span style="background-color: #fff79a; color: #b00800;"><b><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">ㆍ신민회 조직(비밀결사단체)</span></b></span><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><span style="color: #808080;"><b></b></span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><span style="color: #808080;">※ 신민회 : 기독교 이념을 바탕으로한 비밀 결사 단체로 안창호, 이회영, 양기탁, 이동녕, 이갑 등 최초 공화정제 주장</span></span><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><span style="color: #808080;">(평양 대성학교, 경주 오산학교 건립, 남만주 삼원보에 신흥무관학교 설립, 독립군 양성) &gt; 105인 사건으로 해체(1911)</span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="background-color: #fff79a;"><span style="color: #000000;">ㆍ</span>정미의병(해산군인 합류)</span> </b>&gt; 13도 창의군 &gt; 서울진공작전 &gt; 외교 고문 스티븐스 사살</span></span></p>
+            <p style="text-align: justify;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;">ㆍ</span>순종황제 즉위</span></b></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">[1908년]</span></b></span></b></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>동양척식주식회사 설립(주로 토지를 강점, 강매하여 높은 비율의 소작료를 징수하고 많은 양곡을 일본으로 반출)</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">[1909년]</span></b></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>기유각서(사법권 박탈)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>간도협약&nbsp;</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; background-color: #fff79a;"><b><span style="color: #000000;">ㆍ</span></b>안중근, 하얼빈에서 이토히로부미 사살</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><b><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">[1910년]</span></b></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b>경찰권 박탈</span></p>
+            <p style="text-align: justify;"><span style="background-color: #fff79a; color: #000000;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">ㆍ8월 29일 한일병합(경술국치)으로 국권 피탈 &gt; <span style="color: #b00800;"><b>일제 강점기 시작</b></span></span></span></p>
+            <p>&nbsp;</p><p>&nbsp;</p>
+            <img src="../imges/hells-3.png" width="100%">
+            <p>&nbsp;</p><p>&nbsp;</p>
+            
+            <!-- 상단으로 가기 버튼 -->
+            <button id="scrollTopBtn" onclick="scrollToTop()">▲ 상단으로</button>
+        </div>
+    </div>
+
+    <div id="modal-japanese" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>일제강점기 (1910년 ~ 1945년)</h2>
+            <p style="text-align: center; font-size: 1.25em;"><span style="font-family: 'Noto Serif KR'; color: #a43a00;"><b>일제강점기</b></span></p>
+            <p style="text-align: center; font-size: 1.25em;"><span style="font-family: 'Noto Serif KR'; color: #000000;"><b>1910년 ~ 1945년</b></span></p>
+            <p>&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="font-size: 1.25em; text-align: center;">&nbsp;</p>
+            <p style="font-size: 1.25em; text-align: center;"><span style="font-family: 'Noto Serif KR';"><b><span style="color: #000000;">1910년대 무단 통치기(헌병 경찰 통치기) </span></b></span></p>
+            <p style="font-size: 1.25em; text-align: center;"><span style="font-family: 'Noto Serif KR';"><b><span style="color: #000000;">1910년 ~ 1919년</span></b></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b><span style="color: #000000;"><b>행정기구 : </b></span></b><span style="color: #000000;">조선총독부 설치(군인 출신의 총독), 중추원 설치(총독의 자문 기관, 역사 왜곡, 식민 사관)</span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>정치사회 : </b><span style="background-color: #fff79a;">헌병 경찰</span>, <span style="background-color: #fff79a;">칼찬 교사, 태형(조선인만 해당),</span> 즉결처분, 언론.출판.집회의 자유X, 교육 차별(보통학교 조선인 4년 / 일본인 6년의 우민화 정책)&nbsp;</span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>경제수탈 :</b><span style="color: #000000; letter-spacing: 0px;"> <span style="background-color: #fff79a;">토지 조사 사업</span>(<span style="color: #000000;">일본의 재정 확보, </span>신고제, 증거제, 근대적 토지소유권의 확립, 경작권X, 계약제), </span><span style="color: #000000; letter-spacing: 0px; background-color: #fff79a;">회사령(허가제),</span><span style="color: #000000; letter-spacing: 0px;"> 기타 ~령 등</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>국내외 독립운동 :</b></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b><span style="color: #000000;">ㆍ</span>국내 : </b>비밀결사단 신민회(서울, 공화정 지향), <span style="background-color: #fff79a;">독립 의군부</span>(전라도, 임병찬, 복벽주의), <span style="background-color: #fff79a;">대한 광복회</span>(경상도, 박상진, 공화정 지향, 친일부호 처단, 만주사관학교 설립), <span style="background-color: #fff79a;">3.1운동(고종 인산일)</span></span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b><span style="color: #000000;">ㆍ국외 : </span></b><span style="color: #000000;">독립 운동 기지 </span><span style="color: #000000;"><b>서간도</b>(삼원보, </span><span style="color: #000000;">경학사 건설, <span style="background-color: #fff79a;">신흥 무관 학교 설립</span>, 서로 군정서) / <b>북간도</b>(<span style="background-color: #fff79a;">중광단의 대종교,</span> 서전서숙, 북로 군정서, 대한 독립군) / <b>연해주</b>(신한촌, 권업회, 대한 광복군 정부, 대한 국민 의회), 만주에서 의열단 결성(김원봉)&nbsp;</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="font-size: 1.12em; text-align: center;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;"><b><span style="color: #000000;">&lt;1910년대 연도별 사건&nbsp;정리&gt;</span></b></span></b><b><span style="color: #000000;"></span></b></span></p>
+            <p style="text-align: left;">&nbsp;</p>
+            <table style="border-collapse: collapse; width: 100%; height: 305px;" border="1" data-ke-style="style4">
+                <tbody>
+                    <tr style="height: 20px;">
+                        <td style="width: 11.2932%; height: 20px; text-align: center;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1910년</span></b></span></p>
+                        </td>
+                        <td style="width: 101.519%; height: 20px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">8월 29일 한일병합, <b>조선총독부 설치, <span style="color: #b00800;">회사령 공포(허가제)</span></b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 20px;">
+                        <td style="width: 11.2932%; height: 20px; text-align: center;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1911년</span></b></span></p>
+                        </td>
+                        <td style="width: 101.519%; height: 20px; text-align: left;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;">1차 조선교육령(보통학교 조선인 4년), 칼 찬 교사, 안악사건,&nbsp;<b>신민회 사건(105인 사건)</b></span></p>
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>서간도에 경학사, 신흥무관학교 설립(신민회)</b>, <b>연해주에 신한촌 개척, 권업회 조직(이상설, 이종호)</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 20px;">
+                        <td style="width: 11.2932%; height: 20px; text-align: center;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1912년</span></b></span></p>
+                        </td>
+                        <td style="width: 101.519%; height: 20px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">권업회 권업신문 창간(순한글신문), <span style="color: #b00800;"><b>조선 태형령 공포</b></span>, <b>토지조사사업 실시,</b> <b><span style="color: #b00800;">독립 의군부 조직</span>(전라도 임병찬, 복벽주의)</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 20px;">
+                        <td style="width: 11.2932%; height: 20px; text-align: center;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1913년</span></b></span></p>
+                        </td>
+                        <td style="width: 101.519%; height: 20px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">대한부인회 조직(하와이), 흥사단 조직(샌프란시스코 안창호), 조선무역주식회사 창립(박영효, 유길준, 송병준), 한교동사회 조직(간도 이동휘)</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 20px;">
+                        <td style="width: 11.2932%; height: 20px; text-align: center;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;">1914년</span></p>
+                        </td>
+                        <td style="width: 101.519%; height: 20px; text-align: left;">
+                            <p><b><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;">&lt;제1차 세계대전 시작&gt;</span></b></p>
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;">호남선과 경원선 철도 개통,&nbsp;<span style="color: #b00800;"><b>대조선 국민 군당 조직(하와이 박용만)</b></span>, <b>대한광복군 정부 수립(연해주 이상설)</b></span></p>
+                            <p>&nbsp;</p>
+                        </td>
+                    </tr>
+                    <tr style="height: 20px;">
+                        <td style="width: 11.2932%; height: 20px; text-align: center;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1915년</b></span></p>
+                        </td>
+                        <td style="width: 101.519%; height: 20px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">조선국권회복단 조직(윤상태, 서상일, 이시영), 신한혁명당 조직(베이징 유동열,&nbsp;박은식,&nbsp;신규식,&nbsp;이상설), 조선학회 조직(이광수, 신익희, 장덕수),&nbsp;<span style="color: #b00800;"><b>대한광복회 조직(대구 박상진, 공화정)</b></span></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 20px;">
+                        <td style="width: 11.2932%; height: 20px; text-align: center;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1916년</b></span></p>
+                        </td>
+                        <td style="width: 101.519%; height: 20px; text-align: left;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #808080;">농우회 조직(대전)</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 20px;">
+                        <td style="width: 11.2932%; height: 20px; text-align: center;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1917년</b></span></p>
+                        </td>
+                        <td style="width: 101.519%; height: 20px; text-align: left;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #808080;">조선 국민회 조직(평양), 조선 사회당 조직(상하이)&nbsp;</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 20px;">
+                        <td style="width: 11.2932%; height: 20px; text-align: center;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1918년</b></span></p>
+                        </td>
+                        <td style="width: 101.519%; height: 20px; text-align: left;">
+                            <p><span style="color: #000000;"><b><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">&lt;제1차 세계대전 종전(휴전협정) - 미국 대통령 윌슨 민족 자결 주의 등 14개조 평화 원칙 제안&gt;</span></b></span></p>
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">서당규칙 공포, 한인사회당 결성(러시아 이동휘, 김립, 박진순), <b>신한 청년당 결성(상하이 여운영, 장덕수, 조동우 김구 등)</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 125px;">
+                        <td style="width: 11.2932%; height: 125px; text-align: center;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1919년</b></span></p>
+                        </td>
+                        <td style="width: 101.519%; height: 125px; text-align: left;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b><span style="background-color: #fff79a;">2.8 독립 선언(도쿄)</span>, <span style="background-color: #fff79a; color: #b00800;">고종 인산일에 맞춰 3.1운동,</span></b>&nbsp;</span><span style="color: #000000;"><b><span style="color: #b00800;">대한민국 임시 정부 수립(상하이 4.13)</span>,</b> <b><span style="color: #b00800;">제암리 학살 사건</span>,</b> <b>대한 독립군 결성(남만주 홍범도),</b> <b><span style="color: #b00800;">의열단 결성(만주 김원봉)</span>, 북로 군정서 조직(북만주 김좌진)</b></span></span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #666666;"><b>※ 태형령 :</b> 갑오개혁 때 사라졌으나 1912년에 일제에 의해 부활</span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #666666;"><b>※&nbsp;토지조사사업 :</b> 기한 내 신고주의, 증거주의, 경작권 부정, 계약직 전락, 동양척식주식회사가 주도</span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>※&nbsp;신민회(1907년) :</b> 안창호, 양기탁, 이동녕, 이갑, 이회영 형제 등을 주도로 한 기독교 이념을 바탕으로 한 비밀결사단 </span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>※&nbsp;105인 사건 :</b><span style="letter-spacing: 0px;"> 신민회를 해체시키기 위해 데라우치 총독 암살 미수 사건을 꾸밈 &gt; </span><span style="letter-spacing: 0px;">결과 "신민회"가 해체됨</span></span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="letter-spacing: 0px;"><b>※&nbsp;3.1 운동 :</b> 약소국의 민족 해방 운동에 영향을 줌(중국 5.4 운동, 간디 비폭력 운동 등), <u><span style="color: #333333;"><b>3.1 운동의 영향으로 상하이에서 대한민국 임시정부가 수립</b></span></u>, 일제 식민지 지배 방식인 무단통치에서 문화통치로 변경되는 계기</span></span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>※&nbsp;대한민국 임시 정부 :</b>&nbsp;연해주에 대한국민의회 + 서울에 한성정부 + 상하이정부(신한 청년단), 연통제와 교통국 존재, 한인애국단(상하이), 충칭에 한국독립당, 한국광복군 조직</span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>※&nbsp;의열단 :</b>&nbsp;무장독립운동 단체, 신채호의 <u><span style="color: #333333;"><b>&lt;조선혁명선언&gt;</b></span></u>을 활동 지침으로 삼음</span></p>
+            <p><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">&gt; 단장 김원봉, 김익상(조선총독부에 폭탄 투하), 김상옥(종로 경찰서에 폭탄 투하), 나석주(식산은행과 동양척식주식 회사에 폭탄 투하)</span></p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: center; font-size: 1.25em;">&nbsp;</p>
+            <p style="text-align: center; font-size: 1.25em;"><span style="font-family: 'Noto Serif KR';"><b><span style="color: #000000;">1920년대 문화 통치기(민족분열, 기만통치기, 친일파 양성)</span></b></span></p>
+            <p style="font-size: 1.25em; text-align: center;"><span style="font-family: 'Noto Serif KR';"><b><span style="color: #000000;">1919년 ~ 1931년</span></b></span></p>
+            <p style="text-align: center;">&nbsp;</p>
+            <p style="text-align: center;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b><b><b><b>행정기구 : </b></b></b></b><span style="color: #000000;">조선 총독부 총독에 문관 출신 가능(그러나 한번도 임명X), 자치기구 도평의회, 부.면 협의회 설치(대부분이 일본인), </span><span style="background-color: #fff79a; color: #000000;">조선사 편수회(역사 왜곡), 경성 제국 대학 설립(한국인 대학 설립 억압으로 일본이 설치, 서울대학교의 전신)</span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>정치사회 :&nbsp;</b><span style="background-color: #fff79a;">보통경찰</span>(경찰수 증가), 태형령X, <span style="background-color: #fff79a;">치안유지법 실시(사회주의자 토벌),</span> 자유 일부 허용, 언론사 조선일보와 동아일보 창간(그러나 검열, 정간, 통제), 제2차 교육령(한국과 일본의 학제 동일로 6년 교육)</span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>경제수탈 :</b> <span style="background-color: #fff79a;">산미 증식 계획</span>(개간 비용은 농민들에게 전가, 증가량보다 수탈량이 많아 조선인은 만주에서 잡곡을 수입해서 먹음), <span style="background-color: #fff79a;">쌀의 단작화와 상품화 현상 발생</span>, <span style="background-color: #fff79a;">회사령(신고제),</span> 무관세(물산장려운동의 배경)</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>국내외 독립운동 :</b></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b><b>ㆍ국내 :&nbsp;</b></b><span style="color: #000000;">카프 문학(KAPF) 발달, 나운규의 아리랑 영화 상영, <span style="background-color: #fff79a;">형평 운동(백정 차별)</span><span style="color: #000000;"><span style="background-color: #fff79a;">,</span> 어린이 운동(방정환), 청년 운동(조선청년총동맹), 여성운동(근우회),<span>&nbsp;</span></span><span style="background-color: #fff79a;">6.10만세운동</span><span style="color: #000000;"><span style="background-color: #fff79a;">,</span><span>&nbsp;</span></span><span style="background-color: #fff79a;">광주 학생 항일 운동</span><span style="color: #000000;">(신간회 진상조사단 파견, 이후 신간회 해소됨), 조선어연구회(한글 잡지 창간, 가갸날 제정)</span></span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>민족주의</b> 실력 양성 운동, 물산 장려 운동(평양 조만식), 민립 대학 설립 운동(이상재), 문맹 퇴치 운동(조선일보) </span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>사회주의</b> 암태도 소작 쟁의, 원산 노동자 총파업<b> </b></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b><b><b>ㆍ국외 : </b></b></b><span style="background-color: #fff79a;">봉오동전투</span>(홍범도, 대한독립군), <span style="background-color: #fff79a;">청산리 전투</span>(김좌진, <span style="background-color: #fff79a;">북로군정서)</span>, 간도참변, <span style="background-color: #fff79a;">자유시 참변</span>, 3부 결성(행정, 군사, 결성의 정부적 성격), 3부 통합 운동(북만주 : 혁신의회 / 남만주 : 국민부)</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: center; font-size: 1.12em;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b><b>&lt;1920년대 연도별 사건&nbsp;정리&gt;</b></b></span><b></b></span></p>
+            <p>&nbsp;</p>
+            <table style="border-collapse: collapse; width: 100%; height: 660px;" border="1" data-ke-style="style4">
+                <tbody>
+                    <tr style="height: 102px;">
+                        <td style="width: 10.2325%; text-align: center; height: 102px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1920년</b></span></p>
+                        </td>
+                        <td style="width: 89.7675%; height: 102px; text-align: left;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>조선일보와 동아일보 창간</b>, <span style="color: #b00800;"><b>봉오동전투(만주 홍범도, 대한독립군)</b></span>, 평민회 조직, <span style="color: #b00800;"><b>청산리대첩(만주 김좌진, 북로군정서)</b></span>, <b>간도참변, 산미 증식 계획(일제 물자 수탈)</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.2325%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1921년</b></span></p>
+                        </td>
+                        <td style="width: 89.7675%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">천도교 청년회 창립(방정환), 조선어연구회 설립(국문연구소 계승), <b>자유시참변</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.2325%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1922년</b></span></p>
+                        </td>
+                        <td style="width: 89.7675%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">2차 조선교육령(6년제), <span style="color: #808080;">한국 노병회 창설(상하이, 김구, 여운형 등)</span>, 어린이날 제정(천도교, 방정환), <span style="color: #000000;"><span>&nbsp;</span></span><b>물산장려운동 시작(평양 조만식, 국산품장려운동, 조선물산장려회)</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.2325%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1923년</b></span></p>
+                        </td>
+                        <td style="width: 89.7675%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>국민 대표 회의 개최(신채호 '조선 혁명 선언' 작성), <span style="color: #b00800;">조선 형평사 설립</span></b>(진주 <span style="color: #b00800;"><b>형평운동</b></span>, 백정에 대한 차별 철폐 운동), <b>암태도 소작쟁의</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.2325%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1924년</b></span></p>
+                        </td>
+                        <td style="width: 89.7675%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">참의부 조직,<b> 경성 제국 대학 설립(일본이 민족 대학 설립 억제)</b>, <span style="color: #808080;">조선노농총동맹</span>, <b>조선청년총동맹</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.2325%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1925년</b></span></p>
+                        </td>
+                        <td style="width: 89.7675%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">정의부,&nbsp;신민부 조직, 조선사정연구회 조직(백남훈, 안재홍), <b>미쓰야 협정</b>,&nbsp;<b>치안유지법 제정</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 102px;">
+                        <td style="width: 10.2325%; text-align: center; height: 102px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1926년</b></span></p>
+                        </td>
+                        <td style="width: 89.7675%; height: 102px; text-align: left;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><span style="color: #b00800;"><b>6.10 만세 운동(학생 + 사회주의, 순종 인산일)</b></span>, <span style="color: #808080;">한인 혁명군 조직(광둥 여운형)</span>, <span style="color: #808080;">조선극우회 조직(민립극단 중심)</span>, <b>영화 나운규의 '아리랑' 상영</b>, <b>조선어 연구회 '가갸날' 제정(한글날)</b>, 나석주 폭탄 투척(식산은행, 동양척식주식회사)</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 78px;">
+                        <td style="width: 10.2325%; text-align: center; height: 78px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1927년</b></span></p>
+                        </td>
+                        <td style="width: 89.7675%; height: 78px; text-align: left;">
+                            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">조선어연구회 기관지 &lt;한글&gt;발행, <span style="background-color: #fff79a;"><b>신간회 창립</b>(전국지회, 민족유일당 운동 결과물, 조선민흥회, <b>정우회 선언을 계기로 결성</b>, 이후 <b>광주 학생 항일 운동에 진상 조사단 파견</b>)</span>, <b>근우회 조직</b>(신간회 자매 조직, 최초의 여성단체), <span style="color: #808080;">조선노동총동맹, 조선농민총연맹 결성</span></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.2325%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1928년</b></span></p>
+                        </td>
+                        <td style="width: 89.7675%; height: 54px; text-align: left;">
+                            <p><span style="color: #808080; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">의열단 해체</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.2325%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>1929년</b></span></p>
+                        </td>
+                        <td style="width: 89.7675%; height: 54px; text-align: left;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><span style="color: #b00800;"><b>원산 노동자 총파업</b></span>, 국민부 조직(남만주),&nbsp;</span><span style="color: #000000;"><b>조선일보 '문맹 퇴치 운동'전개</b>, <span style="color: #b00800;"><b>광주 학생 항일 운동(나주 민족 차별)</b></span>, 조선혁명군 조직(북만주 양세봉)</span></span></p>
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>&lt;세계대공황 발생&gt;</b></span></p>
+                            <p>&nbsp;</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>※ 소파 방정환 :</b> 손병희의 사위, 천도교 소년회 조직, 어린이날을 제정, 잡지 《어린이》를 발간</span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>※ 6.10만세운동 :</b> 순종 인산일에 맞춰 학생을 중심으로 일어난 독립 운동(학생 + 사회주의자들의 지원), <u>신간회 탄생의 배경이 됨</u></span></p>
+            <p style="text-align: left;">&nbsp;</p>
+            <p>&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="font-size: 1.25em; text-align: center;"><span style="font-family: 'Noto Serif KR';"><b><span style="color: #000000;">1930년대 민족말살통치기</span></b></span></p>
+            <p style="font-size: 1.25em; text-align: center;"><span style="font-family: 'Noto Serif KR';"><b><span style="color: #000000;">1931년 ~ 1945년</span></b></span></p>
+            <p style="text-align: center;">&nbsp;</p>
+            <p style="text-align: center;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b><b>행정기구 :&nbsp;</b></b><span style="color: #000000;"><span style="background-color: #fff79a;">청구 학회(역사 왜곡)</span>&nbsp;</span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>정치사회 :</b>&nbsp;<span style="background-color: #fff79a;"><b>황국 신민화 정책</b>(창씨개명, 황국신민서 암송, 궁성 요배, 신사참배)</span>, <span style="background-color: #fff79a;">사상범 보호 관찰령</span>, 조선일보 동아일보 신문 폐간,&nbsp;<span style="color: #000000;">조선어 사용 금지(조선어 학회 사건), 국민학교령, 농촌 진흥 운동(브나로드 운동~1940)</span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>경제약탈 :</b>&nbsp;<span style="background-color: #fff79a;">남면북양 정책</span>, <span style="background-color: #fff79a;">병참 기지화 정책(군수공장화)</span>, <b><span style="background-color: #fff79a;">국가 총동원법</span>(일본군 위안부, 강제 징용과 징병, <span style="background-color: #fff79a;">공출과 배급</span>)</b></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>국내외 독립운동 :&nbsp;</b></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>ㆍ국내 : </b>조선어 학회(맞춤법 통일안, 표준어 제정, <b>광복 후 우리말 큰사전 제작</b>), 민족주의 사학(정인보), 실증주의 사학(이병도 -&nbsp;<span style="background-color: #fff79a;">진단학회</span>),&nbsp;</span><span style="color: #000000;"><span style="background-color: #fff79a;">사회경제 사학</span>(백남운 - 유물사관, 발전, 법칙, 보편, 일제의 정체성론 비판), 동아일보 브나로드</span><span style="color: #000000;"> 운동(농촌계몽운동)</span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b><b>ㆍ국외 : </b><span style="background-color: #fff79a;">한.중 연합 작전</span> , </b></span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>(북만주)</b> 혁신의회 &gt; 한국독립당, 한국독립군(<span style="background-color: #fff79a;">지청천, 쌍성보전투</span>, 대전자령전투), </span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>(남만주)</b> 국민부 &gt; 조선혁명당, 조선혁명군(<span style="background-color: #fff79a;">양세봉, 영릉가전투</span>, 흥경성전투)</span></p>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: center; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><b>&lt;1930년대 연도별 사건&nbsp;정리&gt;</b></b></span></p>
+            <p>&nbsp;</p>
+            <table style="border-collapse: collapse; width: 100%; height: 858px;" border="1" data-ke-style="style4">
+                <tbody>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1930년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">한국 독립당 창단(김구, 대한민국 임시정부의 여당)</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 78px;">
+                        <td style="width: 10.5813%; text-align: center; height: 78px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1931년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 78px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #b00800;"><b>동아 일보 &lt;브나로드 운동&gt;전개</b></span>, 미곡법 실시, 만보산 사건,&nbsp;<span style="color: #b00800;"><b>한인 애국단 조직(상하이, 김구, 이봉창, 윤봉길)</b></span>, <b>만주 사변</b>(일본이 중국 침략, 독립군이 만주에서 중국 관내로 이전하는 계기), <b>신간회 해소</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 78px;">
+                        <td style="width: 10.5813%; text-align: center; height: 78px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1932년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 78px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>한중 연합군 조직(조선혁명군, 한국독립군, 리춘군)</b>, <span style="color: #b00800;"><b>일왕 폭살 시도(이봉창)</b></span>,&nbsp;<span style="color: #b00800;"><b>홍커우 공원 의거(윤봉길, 중국 국민당 정부 후원 계기)</b></span>, <b>쌍성보 전투(지청천, 한중연합군 + 한국독립군)</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1933년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">조선어 학회 '한글 맞춤법 통일안' 발표, 조선소작조정령(소작쟁의 무마), <b>대전자령 전투(지청천, <b>한중연합군 +&nbsp;</b>한국독립군)</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1934년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 54px; text-align: left;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">진단 학회 조직(역사 연구회)</span></b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1935년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>민족 혁명당 결성(난징)</b>, 한국 국민당 결성(항저우)</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1936년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; background-color: #fff79a;">손기정 배를린 올림픽 마라톤 우승(동아일보 일장기 말살사건)</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1937년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">조선 물산 장려회 강제 해산, 조선어학회《표준말 모음》발간, <span style="background-color: #fff79a;"><b>중.일 전쟁</b></span>, <b>신사참배 강요</b></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1938년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">한글 교육 금지, <span style="color: #b00800;"><b>국가총동원법 공포(침략전쟁 확대, 물자수탈),</b><b> </b><span style="background-color: #fff79a; color: #000000;"><b>조선의용대 조직(중국 관내 최초 군사조직, </b></span></span><span style="background-color: #fff79a;"><b>단장 김원봉</b></span>의&nbsp;한인무장부대)</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1939년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000;"><b><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">&lt;제2차 세계대전 발발&gt;</span></b></span></p>
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">국민징용령 공포, 국민신보 창간(일본어 신문)</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1940년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">창씨 개명 실시, <b>한국 독립당 조직(충칭, 위원장 김구)</b>, 민족 부흥회 사건, 조선어 학회'외래어 표기법 통일안' 발표, <span style="color: #b00800;"><b>한국 광복군 창설(충칭, 지청천 총사령관, 국내 진공작전 계획 중 히로시마에 원자폭탄 투하로 좌절)</b></span>, 조선일보 동아일보 폐간</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1941년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000;"><b><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">&lt;태평양 전쟁&gt;</span></b></span></p>
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">조선어 학습 폐지, 한글 전보 폐지, <b>소학교 → 국민학교령</b>, <span style="color: #b00800;"><b>대한민국 임시정부 건국 강령 발표(삼균주의)</b></span></span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1942년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">조선 군사령 공포, <b>김원봉의&nbsp;조선의용대가 한국광복군에 합류(충칭)</b><span style="color: #000000;">,</span> <b>조선어 학회 사건</b>(최현배, 이극로, 이희승)</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1943년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; height: 54px; text-align: left;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>&lt;일본의 진주만 공격 : 미군의 세계 2차대전 참전 계기, 이로 인해 일본이 패망하게 됨&gt;</b>&nbsp;</span></span></p>
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">징병제 공포, 일본군 위안부 조직, 조선 식량 관리령 공포, 카이로선언 발표, 한국 광복군 인도 미얀마 투입</span></p>
+                        </td>
+                    </tr>
+                    <tr style="height: 54px;">
+                        <td style="width: 10.5813%; text-align: center; height: 54px;">
+                            <p><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">1944년</span></b></span></p>
+                        </td>
+                        <td style="width: 89.4187%; text-align: left; height: 54px;">
+                            <p><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">조선 건국 동맹(여운형, 한반도 내 비밀결사로 광복 후 조선건국준비위원회의 모체 역할을 함)</span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: left;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>※ 한중연합군 :</b> 만주사변으로 북만주(한국독립군 + 중국호로군), 남만주(조선혁명당 + 중국의용군) 한중 연합군 조직&nbsp;</span></p>
+            <p style="text-align: left;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">- 한국독립군(지청천)은 중국호로군과 함께 한중연합 작전을 전개하여 쌍성보 전투, 대전자령 전투에서 승리함</span></p>
+            <p style="text-align: left;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #666666;">- 조선혁명당(양세봉)은 중국의용군과 엽합하여 흥경성 전투에서 승리함&nbsp; &nbsp;</span></p>
+            <p style="text-align: left;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>※ 조선어학회 :</b>&nbsp;조선어연구회(1921년)를 계승 - 맞춤법 통일안, 표준어법, 외래어 표기법 제정, <span style="background-color: #fff79a;"><b>해방 후</b> "우리말 큰사전" 편찬 사업 추진</span></span></p>
+            <p style="text-align: left;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>※ 진단학회 :</b> 이병도, 손진태 등의 실증주의 사학을 추구한 역사 연구회</span></p>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: center;">&nbsp;</p>
+            <p style="text-align: center;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: justify;" data-ke-size="size18"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b><b>※&nbsp;</b>대한민국 임시정부와 의열단의 흐름 정리</b></span><span style="color: #000000;"><b></b></span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">ㆍ</span></b><span style="color: #000000;">3.1운동의 영향으로 </span>김구 상하이에서 <b>대한민국 임시정부 수립(1919)</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>&gt;</b> </span><b>1차 개헌(1919) :</b> 대통령 이승만 선출 &gt; 국민 대표 회의(1923) 결과 이승만 탄핵, 2대 대통령 박은식 선출</span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>&gt; 2차 개헌(1925) :</b> 국무령 중심 내각 책임제에 김구 선출(1925) &gt; <span style="background-color: #fff79a;">김구 </span></span><span style="color: #000000;"><span style="background-color: #fff79a;">한인 애국단 조직(1931)</span> &gt; 한인애국단 이봉창 일왕 폭살 시도, <span style="color: #000000;">윤봉길 홍커우 공원 의거 + 중국 국민당 정부 지원</span>(1932) &gt; 한국 국민당(1935)</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>&gt; 4차 개헌(1940) :</b> <span style="color: #000000;">충칭에서&nbsp;</span><span style="background-color: #fff79a; color: #000000;">김구 한국 독립당, 지청천 한국광복군 창설(1940)</span><span style="color: #000000;"> &gt; </span><span style="background-color: #fff79a;">조소앙의 삼균주의에 기초하여 대한민국 건국 강령 선포(1941)</span> &gt; 김원봉의 조선 의용대가 한국 광복군에 일부 합류(1942)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>&gt; 5차 개헌(1944) :</b> <span style="background-color: #fff79a;">주석에 김구, 부조석에 김규식 선출(1944)</span>&nbsp;</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b><span style="color: #000000;">ㆍ</span></b>김원봉 의열단 조직(1919) &gt; 황포 군관 학교 입교(1925) &gt; 조선 혁명 간부 학교 설립(1932) &gt; 민족 혁명당 조직(1935) &gt; 조선 민족 전선 연맹(1937) &gt; <span style="background-color: #fff79a;">조선 의용대(1938)</span> &gt; 일부 한국 광복군 합류(1942, 김원봉외), </span><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;">일부 <span style="background-color: #fff79a;">조선 의용군 창설(1942</span>, 옌안 지역, 조선 독립 동맹)</span></p>                
+            <p style="text-align: justify;">&nbsp;</p>
+            <img src="https://blog.kakaocdn.net/dn/c0YEkA/btqwCq11b2o/XgUx6q78XVTnP5wB7F9BsK/img.jpg" width="100%">
+            <img src="https://blog.kakaocdn.net/dn/xDJLt/btqwBZjC5y8/62F4N8tMoQ2IdiJMvZ5x4K/img.jpg" width="100%">
+            <p style="text-align: justify;">&nbsp;</p>
+            <!-- 상단으로 가기 버튼 -->
+            <button id="scrollTopBtn" onclick="scrollToTop()">▲ 상단으로</button>
+        </div>
+    </div>
+
+    <div id="modal-independence" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>광복 이후 현재까지 (1945년 ~ )</h2>
+            <p style="font-size: 1.25em; text-align: center;"><span style="color: #000000; font-family: 'Noto Serif KR';"><b><span style="color: #a43a00;">광복 전</span> </b></span></p>
+            <p style="font-size: 1.25em; text-align: center;"><span style="color: #000000; font-family: 'Noto Serif KR';"><b>국제사회의 움직임</b></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff79a;"><b>이집트 카이로 회담(1943.11.27) - 카이로 선언</b></span><b></b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>미국, 영국, 중국 3개의 연합국이 이집트의 수도 카이로에서 발표한 공동선언</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>제 2차 세계대전 발발 후 최초로 일본에 대한 전략 토의(일본이 무조건 항복할 때지 싸울 것을 결정)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ<span style="color: #b00800;">최초로 대한민국의 독립을 국제적으로 보장</span></b></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>얄타 회담(1945.2)</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>미국, 영국, 소련의 나치독일의 제2차 세계대전 패전과 그 관리에 대한 의견을 나눔</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>소련의 참전 영향으로 한반도의 38도선 분할 결정(한반도 내 일본군 무장해제를 목적으로 소련과 미국이 협의)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ<span style="color: #b00800;">신탁 통치 밀약(분단의 원인이 됨)</span></b></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>독일 포츠담 회담(1945.7)</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>미국, 중국, 영국, 소련 4국 참여</span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>ㆍ</b>일본의 무조건적인 항복 요구 정책 결의</span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>ㆍ<span style="color: #b00800;">카이로 선언의 재확인(한국의 독립 약속 재확인)</span></b></span></p>        
+            <p>&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5">
+            <p style="font-size: 1.25em; text-align: center;"><span style="font-family: 'Noto Serif KR'; color: #a43a00;"><b>광복 후</b></span></p>
+            <p style="font-size: 1.25em; text-align: center;"><span style="font-family: 'Noto Serif KR'; color: #000000;"><b>대한민국 정부 수립 전</b></span></p>
+            <p style="font-size: 1.25em; text-align: center;">&nbsp;</p>
+            <p style="text-align: justify;" data-ke-size="size18"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><b>[1945년]</b></b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; background-color: #fff79a;"><b>ㆍ1945년 8월 15일 광복</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>한반도 내 일본군 무장해제를 목적으로 소련과 미군정의 38선 분할 협의(해방군이 아닌 점령군 형태)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>ㆍ</b>조선건국동맹(1944, 여운형)&gt; 건국준비위원회 결성(1945) &gt; 조선인민공화국 수립(1945, 인민위원회 설치)&nbsp;</span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="background-color: #fff79a;">ㆍ</span><span style="color: #b00800;"><span style="background-color: #fff79a;">모스크바&nbsp;3국&nbsp;외상 회의(미국,&nbsp;소련,&nbsp;영국)</span>&nbsp;:</span></b><span style="color: #000000; letter-spacing: 0px;"> 한반도에 임시정부 수립, </span><span style="color: #000000; letter-spacing: 0px; background-color: #fff79a;">4개국이 최대&nbsp;5년간의&nbsp;신탁통치&nbsp;결정(+중국)</span><span style="color: #000000; letter-spacing: 0px;">,&nbsp;</span></span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">미소공동위원회 개최 결정(개최 장소 : <span style="background-color: #fff79a;">덕수궁 석조전</span>)</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>※ 신탁통치 결정 결과 :</b><span style="font-size: 16px; letter-spacing: 0px;">&nbsp;<b><span style="color: #b00800;">좌익과 우익의 극심한 대립 발생</span></b></span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;">* 우익(민족주의, 김구, 이승만, 민주당) : 신탁통치 반대(반탁)</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;"><span style="color: #808080;">*</span>&nbsp;좌익(사회주의, 박헌영, 김원봉 등) : 신탁통치 반대 &gt; 소련의 지침으로 찬성(찬탁)으로 변경</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;"><span style="color: #808080;">*</span>&nbsp;중도(여운형, 김규식, 안재홍 등) : 임시정부 수립 이후 결정</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;" data-ke-size="size18"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>[1946년]</b></span><span style="color: #000000;"><b></b></span><span style="color: #000000;"><b></b></span><span style="color: #000000;"><b></b></span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #b00800;"><b>ㆍ1차 미소공동위원회 개최(덕수궁 석조전) :</b></span> 미국과 소련의 대립</span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000; letter-spacing: 0px;">&nbsp; &nbsp;미국 : 모든 단체가 참여 주장 / 소련 : 신탁통치에 찬성하는 단체만 참여 주장 &gt; </span><span style="color: #000000;"><b><span style="color: #000000;">의견 차로 1차 미소</span>공동위원회 결렬</b></span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>&nbsp; &nbsp;결과 :</b> <span style="color: #b00800;"><b>좌우의 극심한 대립으로 결렬</b></span>, <span style="background-color: #fff79a;">이승만의 정읍 발언(남한 단독정부 수립 주장),</span> 좌우합작운동 전개</span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #808080;"><span style="color: #666666;">* 좌우합작운동(여운형, 김규식 주도) : 미군정이 초기에는 이들을 지지, 좌우합작 7원칙(미소공동위원회 재개, 친일파 처단, 토지개혁) &gt; 여운형이 암살 당한 후 미군정 지원 철폐(냉전 체제 심화)</span></span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>[1</b></span><span style="color: #000000;"><b>947년]</b></span><span style="color: #000000;"><b></b></span><span style="color: #000000;"><b></b></span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #b00800;"><b>ㆍ2차&nbsp;미소공동위원회&nbsp;개최&nbsp;:</b></span> 미국과 소련의 대립으로 완전 결렬(냉전시대) &gt; <b>2차 미소공동위원회 결렬</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍUN총의회 결의 : </b><b>&nbsp;</b>미국이 한반도 문제를 UN에게 이관할 것을 주장 &gt; 소련은 거부했으나 UN에 이관됨 &gt; <span style="background-color: #fff79a;">남북한 </span><span style="letter-spacing: 0px;"><span style="background-color: #fff79a;"><span style="color: #000000;">인구 </span>비례에 의한 총선거 결정</span> &gt;&nbsp;UN&nbsp;한국&nbsp;임시&nbsp;위원단&nbsp;파견&nbsp;&gt;&nbsp;소련의&nbsp;북한&nbsp;입국&nbsp;거부</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>[1948년]</b><b></b></span><b><span style="color: #000000;"></span></b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍUN 소총의회 결과 :</b> <span style="color: #b00800;"><b>남한 단독 정부 수립 결정(총선거 결정)</b>&nbsp;</span>&gt;&nbsp;<span style="color: #000000;"><span style="background-color: #fff79a;"><b>김구 "삼천동포에게 읍고함" 발표</b></span>&nbsp;</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ제주 4.3사건 발생 : </b>5.10 총선거를 앞두고 남로당과 좌익세력 척결이라는 명목으로 무고한 양민 학살&nbsp;</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff79a;"><b>ㆍ김구, 김규식 남북협상 </b></span><b>: </b>4.19~ 4.30 김구와 김규식은 북으로가 김일성과 협상 제의를 했으나 성과 없이 끝남</span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><span style="background-color: #fff79a;"><b>ㆍ5.10&nbsp;남한&nbsp;총선거&nbsp;:</b></span> <span style="color: #b00800;"><b>대한민국 최초 민주주의 선거, 보통선거, </b></span></span><span style="color: #000000;"><span style="color: #000000;">임기 2년 국회의원 198명 선거로 선출, 국호 대한민국 및 </span>제헌국회 헌법 제정(7.17)</span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;"><span style="background-color: #fff79a;">ㆍ8.15&nbsp;대한민국&nbsp;정부&nbsp;수립</span> : </span></b><span style="color: #000000;"><span style="color: #000000;">간선제로 대통령엔 이승만, 부통령엔 이시영 선출</span></span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>9.9 조선민주주의인민공화국 수립(북한 정부 수립)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>10.19 여수, 순천 사건(남한에 존재했던 좌익 군인들의 반란)</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p></p>
+            <img src="../imges/japan.png" width="100%">
+            <p></p>
+            <p>&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="font-size: 1.25em; text-align: center;"><span style="color: #a43a00; font-family: 'Noto Serif KR';"><b>대한민국 </b></span></p>
+            <p style="font-size: 1.25em; text-align: center;"><span style="color: #000000; font-family: 'Noto Serif KR';"><b>역대 대통령과 재임기간 내 사건</b></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="font-size: 1.12em; text-align: left;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>[제1공화국]</b></span></p>
+            <p style="font-size: 1.12em; text-align: left;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>[1~3대 대통령] 이승만(1948~1960)</b></span></p>
+            <p>&nbsp;</p>   
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>정치 :&nbsp;</b>제헌 헌법에 따라 이승만을 대통령으로 선출(임기 4년/1차 중임 허용/간선제), 국회의원(임기 2년제), 반민특위 설치(그러나 친일파 청산에 비협조), 농지개혁법 제정(그러나 개혁에 소극적 양민 학살), 김구 피살, <span style="background-color: #fff79a;">6.25 전쟁 발발(1950)</span><span style="color: #9d9d9d;"> * 이승만에 대한 민심 하락에 개헌 진행</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>ㆍ1차 개헌(1952, 발췌 개헌, 대통령 직선제)</b>, 부산 정치 파동(부산에서 폭력배들을 동원해 야당 정치인 탄압) &gt; 결과 : 이승만 2대 대통령 당선</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ2차 개헌(1954, 사사오입 개헌, <span style="background-color: #fff79a;">초대 대통령에 한해 중임 제한 철폐</span>)</b>, <span style="background-color: #fff79a;">진보당 사건</span>(대통령 선거에 출마한 조봉암이 우세하자 간첩 혐의를 씌워 사형시킴) &gt; 신국가 보안법 제정 &gt;&nbsp;경향신문 폐간(1959, 이승만 정권 비판했다는 이유)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="background-color: #fff79a;">3.15 부정 선거</span>(부통령 이기붕 당선) &gt;<span style="background-color: #fff79a;"> 4.19 혁명</span>(1960, 마산을 시작으로 부산, 전국으로 확대) &gt; <span style="background-color: #fff79a;">김주열</span> 시신 발견 &gt; 전국에 계엄령 선포 &gt; <span style="background-color: #fff79a;">대학교수 이승만 하야 시국선언문 발표</span> &gt; 이승만 하야, <b>허정 과도 내각 집권(당시 외무 장관)</b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><b>ㆍ</b>3차 개헌(대한민국 역사상 유일한 의원 내각제, 민의원과 참의원의 양원제)</b></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>경제 :&nbsp;</b>한미 원조 협정 체결,&nbsp;</span><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;">미국의 원조 물자를 가공하는 <span style="background-color: #fff79a;">삼백 산업 발달</span>(설탕, 밀가루, 면화) &gt; 미국의 무상 원조 물자에서 유상 차관형태로 전환(1958) &gt; 경제 위기</span></p>
+            <p style="text-align: justify;">&nbsp;</p>   
+            <p style="font-size: 1.25em; text-align: center;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>&lt;6. 25 전쟁 발생 원인&gt;</b><b></b></span><span style="color: #000000;"><b></b></span><span style="color: #000000;"><b></b></span></span><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><span style="color: #b00800;"><b></b></span></span></span></p>
+            <p style="font-size: 1.25em; text-align: center;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;">미국 국무장관인 애치슨이 미국 극동방위선에 한반도를 제외하고 남한 내 미군을 철수함 &gt; 김일성 소련(스탈린)과 군사협정을 맺고 무력통일을 하기 위한 <span style="background-color: #fff79a;"><b>북한의&nbsp;기습적인&nbsp;남침으로 전쟁 발발</b></span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><b><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #666666;">※ 시험문제와 상관없지만 역사를 공부할 때 참고하기 : 한국전쟁 참전국, UN 연합군 16개 국가와 군인 수</span></b></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">미국(48만명), 영국(5만6천명), 호주(8407명), 네덜란드(5322명), 캐나다(2만 5687명), 프랑스(3421명), 뉴질랜드(3794명), 필리핀(7420명), 터키(1만 4936명), 태국(6326명), 남아프리카 연방(826명), 그리스(4992명), 벨기에(3498명), 룩셈부르크(38명), 에티오피아 제국(3518명), 콜롬비아(5100명)</span></p>
+            <p>&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5">
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[제2공화국]</b></span></p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[4대 대통령] 윤보선(1960~1962) / 장면 내각제(총리제)</b></span></p>
+            <p>&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>정치 : </b>장면 내각제,&nbsp;</span><span style="color: #000000;">형식적 대통령 존재(외교담당)</span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>ㆍ4차 개헌(소급 입법 특별법, 3.15부정선거 처벌)</b>, 민주화를 위한 각종 규제 완화, </span></span><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;">민주당 내분</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>경제 : </b>제 1차 경제개발 5개년 계획 수립</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>[제2공화국 헌법 정지, 3년간의 군정](1961~1963)</b></span><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b></b></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>박정희 5.16 군사정변</b>(내각의 무능과 사회 혼란을 이유로 정변을 일으킴, 민간인에게 정권 이양 약속), <span style="background-color: #fff79a;">국가 재건 최고 회의(의장 박정희) 군정 실시</span> &gt; 중앙정보부 설치(학생 운동 지도자 처벌, 비판 언론 탄압), 화폐 개혁 실시(환 → 원)</span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>ㆍ5차 개헌(임기 4년 중임이 가능/국회 단원제)</b> &gt; 박정희 육군 전역 뒤 민간인 신분으로 비밀리에 민주 공화당을 창당한 뒤 대통령에 당선 &gt; 경제개발 5개년 계획 실시(1962)</span></p>
+            <p>&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[제3공화국]</b></span></p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">[5~9대 대통령] 박정희(1963~1972)</span></b></span></p>
+            <p style="text-align: justify; font-size: 1.25em;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>정치 : </b>한일국교 정상화 &gt; <span style="background-color: #fff79a;">6.3항쟁(6.3시위, 한일수교 반대, 민족적 민주주의 장례식)</span> &gt; 휴교령, 계엄령 선포 &gt; 1차 인민 혁명당 사건 발생 &gt; <span style="color: #000000;">한일 협정 체결(1965, 굴욕 협정)</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b><b>6차 개헌(1969, 3선 개헌 추진) </b>&gt; 3선 연임 허용 개헌안 통과 &gt; 박정희 장기 집권 가능</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>경제 : </b>1. 2차 경제개발 5개년 계획(1962~1971), 경공업 발달(노동집약적, 섬유, 신발 , 가발 등 수출 산업), 한일협정으로 경제 개발 자금 획득, <span style="background-color: #fff79a;">베트남 파병(1966, 브라운 각서 체결)</span>, <span style="background-color: #fff79a;">서독에 간호사와 광부 파견</span>, 농어촌 고리채 정리, 새마을 운동(1970), 경부 고속 국도 개통(1970), <span style="color: #000000;">저임금, 저곡가의 정부 주도의 수출 무역 단행(이촌향도 현상), </span><span style="color: #000000;">전태일 열사 분신 사건(1970)&nbsp;</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;"><b>[제4공화국]</b></span></b></span></p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;"><b>[박정희 유신정권](1972~1980)</b></span></b></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><span style="background-color: #fff79a;"><b>정치 : ㆍ7차 개헌(1972, 유신 헌법, 대통령 간선제 → 통일 주체 국민 회의 에서 선거, <b>대통령 임기 6년 중임 제한 철폐 장기 독재 가능, </b>국회 해산권, 국회의원 1/3 임명권, 긴급 조치권)</b></span>, 비상 계엄령 선포, 출판과 언론활동 검열, 경법죄 처벌, 장발 금지, 미니스커트 단속, 야간 통행금지 &gt; 유신반대 언론자유수호운동(동아일보의 백지광고), 민청학련(제 2차 인민 혁명당 사건 조작), <span style="background-color: #fff79a;">3.1 민주 구국선언(1976) </span></span><span style="color: #000000;">&gt; 김대중 납치 사건, <span style="background-color: #fff79a;">YH무역회사사건</span>(부당한 폐업에 신민당 앞에서 농성을 벌이자 신민당 총재였던 김영삼이 기자회견으로 유신 체제를 비판) &gt; 국가 모독 죄로 김영삼 국회의원 제명 &gt; 김영삼 정치 기반인 부산과 마산에서 <span style="background-color: #fff79a;">부마항쟁(1979)</span> 발생 &gt; <b>10.26 사태(김재규의 총에 박정희 피살, 유신 체제 붕괴)</b></span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>경제 : </b>3. 4차 경제개발 5개년 계획(1972~1981), <span style="color: #000000;">남동&nbsp;임해&nbsp;공업&nbsp;지구&nbsp;형성,&nbsp;</span><span style="background-color: #fff79a;">중화학 발달(포항 제철)</span>, <span style="color: #000000;">제1차&nbsp;석유&nbsp;파동(1973),&nbsp;<span style="color: #000000;"><span style="background-color: #fff79a;">수출 100억불 달성(1977)</span>,</span> 2차 석유파동(1979) &gt; 외채위기, 기업 도산, 물가상승</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>통일정책 : </b><span style="background-color: #fff79a;">남북 적십자 회담</span>, <span style="background-color: #fff79a;">7.4남북 공동 성명</span>(1972, 비밀 회담, 자주 평화 민족대단결) &gt; <b><span style="color: #b00800;">남북 조절 위원회 설치</span></b></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: justify; font-size: 1.12em;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b><b>[10대 대통령] 최규하<b>(1979~1980)</b></b></b></span></p>
+            <p style="text-align: justify; font-size: 1.25em;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">대한민국 최초 국무총리 출신 대통령(신군부의 압박으로 대통령에서 사퇴)</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">12.12사태(1979, 신군부 세력 등장) &gt; 전두환이 쿠테타를 일으켜 정권 장악</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: justify; font-size: 1.12em;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>[</b><b>제5공화국]</b></span></p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>[11~12대 대통령] 전두환(1980~1988)</b></span></p>
+            <p style="text-align: justify; font-size: 1.25em;">&nbsp;</p>  
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>정치 :</b> 비상계엄령 전국 확대 &gt; <span style="background-color: #fff79a;"><b><span style="color: #000000;">5.18 광주 민주화운동(1980, 시민군 조직, 계엄군의 무력진압, 관련 기록물 유네스코 세계 기록 유산으로 등재)</span></b></span></span></span></p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>ㆍ8차 개헌(대통령 7년 단임 간선제)</b>, <span style="color: #000000;">국가 보위 비상 대책 위원회 설치, 삼청교육대 설치, </span></span><span style="color: #000000;">언론 탄압(보도 지침, 언론사 통폐합), 과외 학원 전면 금지, 중학생 의무 교육 시행, 대학 졸업 정원제 실시, <span style="color: #000000;">박종철 고문치사 사건 &gt; </span>4.13 호헌 조치 &gt;&nbsp;<span style="background-color: #fff79a;">6월 민주 항쟁(1987, 이한열 최루탄 피격, 호헌 철폐, 독재 타도 운동) &gt;</span> 노태우 6.29 민주화 선언 발표 &gt; </span></span><b><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;">9차 개헌(대통령 5년 단임 직선제 헌법 마련)</span></span></b></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b><span style="color: #000000;">유화정책 :&nbsp;</span></b><span style="color: #000000;">프로야구창단, 스크린 산업 육성, 성문화 시장 오픈, 두발 자유화, 중고생 교복 자율화, 야간 통행금지 해제, 해외여행 자율화</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>경제 :</b> 부실 기업 정리, <span style="background-color: #fff79a;">3저 호황(저금리 , 저달러, 저유가),</span> <b>최저 임금법 도입</b>, 물가 안정, 중화학공업 발달</span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>통일 정책 :</b> <span style="background-color: #fff79a;">최초 이산가족 상봉(1985),</span> 남북 공연단 교환</span></p>
+            <p style="text-align: center;">&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[제6 공화국 ~ 현재]</b></span></p>
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[13대] 대통령 노태우(1988~1993)</b></span></p>
+            <p style="text-align: justify; font-size: 1.25em;">&nbsp;</p>  
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>정치 :</b> 1</span><span style="color: #000000;">6년 만에 직선제 실시, 여소야대(노태우, 김종필, 김영삼 3당 합당으로 민주 자유당 창당), <span style="background-color: #fff79a;">소련.중국 및 동유럽과 대북 외교 수교</span>, <span style="background-color: #fff79a;">서울 올림픽 개최(1988)</span></span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>통일 정책 :</b> <span style="background-color: #fff79a;">남북 UN 동시 가입(1991), 남북 기본 합의서(1991, 최초 공식 합의서, 한반도 비핵화 공동 선언)</span></span></p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: justify; font-size: 1.12em;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>[14대] 대통령 김영삼(1993~1998)</b></span></p>
+            <p style="text-align: justify; font-size: 1.25em;">&nbsp;</p> 
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>정치 :</b> </span><span style="color: #000000;"><b><span style="color: #b00800;">최초 문민정부(군인 X)</span></b>, 역사 바로 세우기(전두환 대통령직 박탈, 조선총독부 폭파), <span style="background-color: #fff79a;">금융실명제(1993)</span>, 고위 공직자 재산 등록제, 지방자치제 전면 실시, 민주 노총 결성(1995)</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>경제 :</b> 공기업 민영화, 금융업 규제 완화, 무역 수지 적자,&nbsp;우루과이 라운드 타결(1993, 농산물, 섬유, 철강 등 전면 개방), <span style="color: #000000;"><span style="background-color: #fff79a;">세계 무역기구 WTO 가입(1995)</span>, </span><span style="background-color: #fff79a;">경제 협력 개발 기구&nbsp;OECD 가입(1996), <span style="color: #000000;">IMF&nbsp;</span>외환위기 발생(1997)</span></span></p>
+            <p>&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[15대] 대통령 김대중(1998~2003)</b></span></p>
+            <p style="text-align: justify; font-size: 1.25em;">&nbsp;</p>   
+            <p style="text-align: justify;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><span style="color: #000000;"><b>정치 :</b> </span><span style="color: #000000;">국민의 정부(최초의 정권 교체), <span style="background-color: #fff79a;">국민 기초 생활보장제도 실시(1999)</span>, IT 벤처 기업 육성, 노벨평화상 수상</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>경제 :</b> 공기업 구조 조정, 대기업 매각, 부실 금융기관 정상화, 노사정 위원회 구성(1998), <span style="background-color: #fff79a;">IMF 외환위기 극복(2001, 금 모으기 운동)</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>통일정책 :</b> 햇볕 정책, 정주영 회장 소떼 방북, <span style="background-color: #fff79a;">금강산 관광 산업(1998), 경의선 복구, 개성공단 설치, 남북정상회담(최초) &gt; 6.15 남북 공동 선언 발표(2000)</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: justify; font-size: 1.12em;"><span style="font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif; color: #000000;"><b>[16대] 대통령 노무현(2003~2008)</b></span></p>
+            <p style="text-align: justify; font-size: 1.25em;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>정치 :</b> 참여정부, 권위주의 청산 노력, 과거사 정리 사업, 독점기업 규제, 복지 지출 확대, <span style="background-color: #fff79a;">호주제 폐지(2005)</span></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>경제 :</b>&nbsp;<b><span style="color: #b00800;">한미, 칠레, 유럽 자유무역 협정 FTA 체결</span></b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>통일정책 :</b> 경의선 복구 완공, <span style="background-color: #fff79a;">개성공단 착공식</span>,&nbsp;<span style="background-color: #fff79a;"> 2차 남북정상회담 &gt; </span><span style="background-color: #fff79a;">10.4 남북 공동 선언(2007)</span></span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><span style="color: #9d9d9d; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">* 개성공단 설치는 김대중 정부 때이고 개성공단 착.공.식은 노무현 정부때라는 것을 잊지말 것!</span></p>
+            <p>&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: justify; font-size: 1.12em;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>[17대] 대통령 이명박(2008~2013) :</b></span><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b></b></span></p>
+            <p style="text-align: justify;"><span style="color: #000000; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;">실용정부(친기업), 서울에서 G20 정상 회의 개최(2010), 한.미 자유무역 협정 FTA 비준(2012)</span></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6">
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>※ 참고 대한민국 헌법 공포 순서</b></span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>제헌 헌법 : 대통령 간선제(임기 4년 중임 가능), 국회의원 임기 2년</span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>1952년 이승만 정부 1차 개헌(발췌 개헌) : 대통령 직선제</span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>1954년 이승만 정부 2차 개헌(사사오입 개헌) : 초대 대통령에 한해 중임 제한 철폐</span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>1960년 허정 과도 정부 3차 개헌 : 내각 책임제, 국회 양원제(민의원, 참의원)</span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>1960년 장면 내각 4차 개헌 : 3.15 부정 선거 소급 특별법 제정</span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>1962년 박정희 정부 5차 개헌 : 대통령 직선제(임기 4년 중임 가능), 국회 단원제</span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>1969년 박정희 정부 6차 개헌 : 대통령 3선 허용</span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>1972년 박정희 유신 7차 개헌 : 대통령 간선제(통일 주체 국민 회의를 통함, 임기 6년)</span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>1980년 전두환 정부 8차 개헌 : 대통령 선거인단에 의한 간선제(임기 7년)</span></p>
+            <p style="text-align: justify;"><span style="color: #666666; font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;"><b>ㆍ</b>1987년 전두환 정부 9차 개헌 : 대통령 직선제(5년 단임) ~ 현재까지</span></p>
+            <!-- 상단으로 가기 버튼 -->
+            <button id="scrollTopBtn" onclick="scrollToTop()">▲ 상단으로</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 한국사 능력 검정시험 준비</p>
+    </footer>
+
+    <script>
+        // 팝업 열기, 닫기, 이동 처리
+        const sectionItems = document.querySelectorAll('.section-item');
+        const modals = document.querySelectorAll('.modal');
+        const closeButtons = document.querySelectorAll('.close-btn');
+        const navButtons = document.querySelectorAll('.nav-btn');
+
+        // 팝업 열기
+        sectionItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const targetModal = document.getElementById(item.getAttribute('data-modal'));
+                resetScroll(targetModal); // 팝업 열기 전 스크롤 초기화
+                targetModal.style.display = 'block';
+            });
+        });
+
+        // 팝업 닫기
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal');
+                modal.style.display = 'none';
+                resetScroll(modal); // 팝업 닫기 전 스크롤 초기화
+            });
+        });
+
+        // 팝업 간 이동 처리
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const currentModal = button.closest('.modal');
+                const targetModal = document.getElementById(button.getAttribute('data-target'));
+
+                currentModal.style.display = 'none';
+                resetScroll(currentModal); // 현재 팝업 닫기 전 스크롤 초기화
+
+                resetScroll(targetModal); // 새 팝업 열기 전 스크롤 초기화
+                targetModal.style.display = 'block';
+            });
+        });
+
+        // 스크롤 초기화 함수
+        function resetScroll(modal) {
+            const modalContent = modal.querySelector('.modal-content');
+            modalContent.scrollTop = 0; // 스크롤을 맨 위로 초기화
+        }
+
+        window.addEventListener('click', (event) => {
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const currentModal = button.closest('.modal');
+                const targetModal = document.getElementById(button.getAttribute('data-target'));
+
+                currentModal.style.display = 'none';
+                targetModal.style.display = 'block';
+            });
+        });
+        window.onscroll = function() {
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollTopBtn.style.display = "block";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        function adjustButtonPosition() {
+        const modal = document.querySelector('.modal-content');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        const modalRect = modal.getBoundingClientRect();
+        
+        prevBtn.style.top = `${modalRect.top + modalRect.height / 2}px`;
+        nextBtn.style.top = `${modalRect.top + modalRect.height / 2}px`;
+
+        prevBtn.style.left = `${modalRect.left - 60}px`;  // 모달 창 왼쪽 밖으로 이동
+        nextBtn.style.right = `${window.innerWidth - modalRect.right - 60}px`;  // 모달 창 오른쪽 밖으로 이동
+        }
+
+        document.querySelectorAll('.section-item').forEach(item => {
+            item.addEventListener('click', () => {
+                adjustButtonPosition();
+            });
+        });
+
+        // 모든 팝업 닫기
+        function closeAllModals() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => modal.style.display = 'none');
+        }
+
+        // 팝업 간 이동
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const currentModal = button.closest('.modal');
+                const targetModalId = button.getAttribute('data-target');
+                const targetModal = document.getElementById(targetModalId);
+                
+                // 현재 팝업 닫고, 타겟 팝업 열기
+                currentModal.style.display = 'none';
+                targetModal.style.display = 'block';
+
+                // 팝업 열릴 때 스크롤 위치 초기화
+                targetModal.querySelector('.modal-content').scrollTop = 0;
+            });
+        });
+
+        // 팝업 닫기
+        document.querySelectorAll('.close-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal');
+                modal.style.display = 'none';
+            });
+        });
+
+
+    </script>
+</body>
+</html>
